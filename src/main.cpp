@@ -3,6 +3,9 @@
 
 #include "lovyanGfxSetup.h"
 
+// import ui
+#include "ui/ui.h"
+
 #define TFT_HOR_RES SCREEN_WIDTH
 #define TFT_VER_RES SCREEN_HEIGHT
 
@@ -91,18 +94,22 @@ void setup()
 
   Serial.println("Setup done");
 
-#if 1
+// this is the default template
+#if 0
   /* Create a simple label. */
-  lv_obj_t *label = lv_label_create( lv_scr_act() );
-  lv_label_set_text( label, "Hello Arduino, I'm LVGL!" );
-  lv_obj_align( label, LV_ALIGN_CENTER, 0, 0 );
+  lv_obj_t *label = lv_label_create(lv_scr_act());
+  lv_label_set_text(label, "Hello Arduino, I'm LVGL!");
+  lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
 #endif
 
+  // loads custom ui
+  ui_init();
 }
 
 void loop()
 {
   lv_task_handler(); /* Let LVGL do its work. */
+  ui_tick();
 
   // Do something useful here.
 }
