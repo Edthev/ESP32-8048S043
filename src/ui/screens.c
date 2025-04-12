@@ -29,16 +29,40 @@ void create_screen_main() {
             {
                 lv_obj_t *parent_obj = obj;
                 {
-                    lv_obj_t *obj = lv_tabview_add_tab(parent_obj, "Home");
+                    lv_obj_t *obj = lv_tabview_get_tab_bar(parent_obj);
+                    {
+                        lv_obj_t *parent_obj = obj;
+                        {
+                            // homePage
+                            lv_obj_t *obj = lv_tabview_add_tab(lv_obj_get_parent(parent_obj), "Home");
+                            objects.home_page = obj;
+                            lv_obj_set_style_bg_color(obj, lv_color_hex(0xffffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
+                            {
+                                lv_obj_t *parent_obj = obj;
+                                {
+                                    lv_obj_t *obj = lv_label_create(parent_obj);
+                                    lv_obj_set_pos(obj, 342, 127);
+                                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                                    lv_label_set_text(obj, "Hello this is a test");
+                                }
+                            }
+                        }
+                    }
                 }
                 {
+                    // lovePage
                     lv_obj_t *obj = lv_tabview_add_tab(parent_obj, "Love");
+                    objects.love_page = obj;
                 }
                 {
+                    // moodPage
                     lv_obj_t *obj = lv_tabview_add_tab(parent_obj, "Mood");
+                    objects.mood_page = obj;
                 }
                 {
+                    // musicPage
                     lv_obj_t *obj = lv_tabview_add_tab(parent_obj, "Music");
+                    objects.music_page = obj;
                 }
             }
         }
@@ -51,7 +75,7 @@ void tick_screen_main() {
 
 void create_screens() {
     lv_disp_t *dispp = lv_disp_get_default();
-    lv_theme_t *theme = lv_theme_default_init(dispp, lv_palette_main(LV_PALETTE_BLUE), lv_palette_main(LV_PALETTE_RED), false, LV_FONT_DEFAULT);
+    lv_theme_t *theme = lv_theme_default_init(dispp, lv_palette_main(LV_PALETTE_BLUE), lv_palette_main(LV_PALETTE_RED), true, LV_FONT_DEFAULT);
     lv_disp_set_theme(dispp, theme);
     
     create_screen_main();
