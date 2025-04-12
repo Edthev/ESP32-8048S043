@@ -16,6 +16,10 @@ uint32_t draw_buf[DRAW_BUF_SIZE / 4];
 
 LGFX tft;
 
+// import actions
+extern lv_event_t g_eez_event;
+extern bool g_eez_event_is_available;
+
 #if LV_USE_LOG != 0
 void my_print(lv_log_level_t level, const char *buf)
 {
@@ -54,7 +58,8 @@ void my_touchpad_read(lv_indev_t *indev, lv_indev_data_t *data)
     data->state = LV_INDEV_STATE_PRESSED;
     data->point.x = touchX;
     data->point.y = touchY;
-#if 1
+// prints x & y cords
+#if 0
     Serial.printf("x: %03d, y: %03d\n", data->point.x, data->point.y);
 #endif
   }
@@ -110,6 +115,11 @@ void loop()
 {
   lv_task_handler(); /* Let LVGL do its work. */
   ui_tick();
-
-  // Do something useful here.
+  // if button pressed print and set to false
+  if (g_eez_event_is_available == true)
+  {
+    lv_obj_t *obj = lv_event_get_target_obj(&g_eez_event);
+    Serial.printf("Received event from obj: %u\n", obj);
+    g_eez_event_is_available = false;
+  }
 }

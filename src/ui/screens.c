@@ -21,10 +21,26 @@ void create_screen_main() {
     {
         lv_obj_t *parent_obj = obj;
         {
-            lv_obj_t *obj = lv_label_create(parent_obj);
-            lv_obj_set_pos(obj, 356, 232);
-            lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
-            lv_label_set_text(obj, "Hello, world!");
+            lv_obj_t *obj = lv_tabview_create(parent_obj);
+            lv_tabview_set_tab_bar_position(obj, LV_DIR_TOP);
+            lv_tabview_set_tab_bar_size(obj, 32);
+            lv_obj_set_pos(obj, 0, 0);
+            lv_obj_set_size(obj, 800, 480);
+            {
+                lv_obj_t *parent_obj = obj;
+                {
+                    lv_obj_t *obj = lv_tabview_add_tab(parent_obj, "Home");
+                }
+                {
+                    lv_obj_t *obj = lv_tabview_add_tab(parent_obj, "Love");
+                }
+                {
+                    lv_obj_t *obj = lv_tabview_add_tab(parent_obj, "Mood");
+                }
+                {
+                    lv_obj_t *obj = lv_tabview_add_tab(parent_obj, "Music");
+                }
+            }
         }
     }
 }
