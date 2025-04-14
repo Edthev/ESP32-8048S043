@@ -99,14 +99,6 @@ void setup()
 
   Serial.println("Setup done");
 
-// this is the default template
-#if 0
-  /* Create a simple label. */
-  lv_obj_t *label = lv_label_create(lv_scr_act());
-  lv_label_set_text(label, "Hello Arduino, I'm LVGL!");
-  lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
-#endif
-
   // loads custom ui
   ui_init();
 }
