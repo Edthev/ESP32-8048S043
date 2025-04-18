@@ -39,7 +39,7 @@ void create_screen_main() {
                     lv_obj_t *obj = lv_img_create(parent_obj);
                     lv_obj_set_pos(obj, 0, 0);
                     lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
-                    lv_img_set_src(obj, &img_eating);
+                    lv_img_set_src(obj, &img_princess);
                 }
             }
         }
@@ -60,7 +60,7 @@ void create_screen_main() {
                     lv_obj_t *obj = lv_label_create(parent_obj);
                     lv_obj_set_pos(obj, 0, 0);
                     lv_obj_set_size(obj, 400, 400);
-                    lv_label_set_text(obj, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+                    lv_label_set_text(obj, "\n\n\n\n\n\nHappy Birthday!");
                     lv_obj_set_style_text_font(obj, &lv_font_montserrat_28, LV_PART_MAIN | LV_STATE_DEFAULT);
                     lv_obj_set_style_align(obj, LV_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
                     lv_obj_set_style_text_align(obj, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
