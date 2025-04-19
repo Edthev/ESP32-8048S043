@@ -4,17 +4,17 @@
 #include "unity/unity.h"
 #include <string.h>
 
-static const char * long_text =
+static const char *long_text =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada ultrices magna in rutrum.";
-static const char * long_text_multiline =
+static const char *long_text_multiline =
     "Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit.\nCras malesuada ultrices magna in rutrum.\n";
-static const char * empty_text = "";
+static const char *empty_text = "";
 
-static lv_obj_t * active_screen = NULL;
-static lv_obj_t * label;
-static lv_obj_t * long_label;
-static lv_obj_t * long_label_multiline;
-static lv_obj_t * empty_label;
+static lv_obj_t *active_screen = NULL;
+static lv_obj_t *label;
+static lv_obj_t *long_label;
+static lv_obj_t *long_label_multiline;
+static lv_obj_t *empty_label;
 
 void setUp(void)
 {
@@ -42,7 +42,7 @@ void test_label_creation(void)
 
 void test_label_set_text(void)
 {
-    const char * new_text = "Hello world";
+    const char *new_text = "Hello world";
 
     /* Refresh with the current text. */
     lv_label_set_text(label, NULL);
@@ -60,12 +60,10 @@ void test_label_get_letter_pos_align_left(void)
     lv_point_t last_letter_point;
     const lv_point_t expected_first_letter_point = {
         .x = 0,
-        .y = 0
-    };
+        .y = 0};
     const lv_point_t expected_last_letter_point = {
         .x = 29,
-        .y = 0
-    };
+        .y = 0};
 
     const uint32_t first_letter_idx = 0;
     const uint32_t last_letter_idx = strlen(lv_label_get_text(long_label_multiline)) - 1; /* char index starts at 0 */
@@ -88,12 +86,10 @@ void test_label_get_letter_pos_align_left_on_empty_text(void)
     lv_point_t last_letter_point;
     const lv_point_t expected_first_letter_point = {
         .x = 0,
-        .y = 0
-    };
+        .y = 0};
     const lv_point_t expected_last_letter_point = {
         .x = 0,
-        .y = 0
-    };
+        .y = 0};
 
     const uint32_t first_letter_idx = 0;
     const uint32_t last_letter_idx = strlen(lv_label_get_text(empty_label)) - 1;
@@ -117,16 +113,13 @@ void test_label_long_text_multiline_get_letter_pos_align_left(void)
     lv_point_t last_letter_after_new_line_point;
     const lv_point_t expected_first_letter_point = {
         .x = 0,
-        .y = 0
-    };
+        .y = 0};
     const lv_point_t expected_last_letter_point = {
         .x = 305,
-        .y = 32
-    };
+        .y = 32};
     const lv_point_t expected_last_letter_after_new_line_point = {
         .x = 0,
-        .y = 48
-    };
+        .y = 48};
 
     const uint32_t first_letter_idx = 0;
     const uint32_t last_letter_idx = strlen(lv_label_get_text(long_label_multiline)) - 1; /* char index starts at 0 */
@@ -159,12 +152,10 @@ void test_label_long_text_get_letter_pos_align_left(void)
     lv_point_t last_letter_point;
     const lv_point_t expected_first_letter_point = {
         .x = 0,
-        .y = 0
-    };
+        .y = 0};
     const lv_point_t expected_last_letter_point = {
         .x = 0,
-        .y = 1536
-    };
+        .y = 1536};
 
     const uint32_t first_letter_idx = 0;
     const uint32_t last_letter_idx = strlen(lv_label_get_text(long_label)) - 1; /* char index starts at 0 */
@@ -187,12 +178,10 @@ void test_label_get_letter_pos_align_right(void)
     lv_point_t last_letter_point;
     const lv_point_t expected_first_letter_point = {
         .x = -29,
-        .y = 0
-    };
+        .y = 0};
     const lv_point_t expected_last_letter_point = {
         .x = 0,
-        .y = 0
-    };
+        .y = 0};
 
     const uint32_t first_letter_idx = 0;
     const uint32_t last_letter_idx = strlen(lv_label_get_text(long_label_multiline)) - 1; /* char index starts at 0 */
@@ -215,12 +204,10 @@ void test_label_get_letter_pos_align_right_on_empty_text(void)
     lv_point_t last_letter_point;
     const lv_point_t expected_first_letter_point = {
         .x = 0,
-        .y = 0
-    };
+        .y = 0};
     const lv_point_t expected_last_letter_point = {
         .x = 0,
-        .y = 0
-    };
+        .y = 0};
 
     const uint32_t first_letter_idx = 0;
     const uint32_t last_letter_idx = strlen(lv_label_get_text(empty_label)) - 1;
@@ -244,16 +231,13 @@ void test_label_long_text_multiline_get_letter_pos_align_right(void)
     lv_point_t last_letter_after_new_line_point;
     const lv_point_t expected_first_letter_point = {
         .x = -205,
-        .y = 0
-    };
+        .y = 0};
     const lv_point_t expected_last_letter_point = {
         .x = 0,
-        .y = 32
-    };
+        .y = 32};
     const lv_point_t expected_last_letter_after_new_line_point = {
         .x = 0,
-        .y = 48
-    };
+        .y = 48};
 
     const uint32_t first_letter_idx = 0;
     const uint32_t last_letter_idx = strlen(lv_label_get_text(long_label_multiline)) - 1; /* char index starts at 0 */
@@ -286,12 +270,10 @@ void test_label_long_text_get_letter_pos_align_right(void)
     lv_point_t last_letter_point;
     const lv_point_t expected_first_letter_point = {
         .x = -8,
-        .y = 0
-    };
+        .y = 0};
     const lv_point_t expected_last_letter_point = {
         .x = -3,
-        .y = 1536
-    };
+        .y = 1536};
 
     const uint32_t first_letter_idx = 0;
     const uint32_t last_letter_idx = strlen(lv_label_get_text(long_label)) - 1; /* char index starts at 0 */
@@ -314,12 +296,10 @@ void test_label_get_letter_pos_align_center(void)
     lv_point_t last_letter_point;
     const lv_point_t expected_first_letter_point = {
         .x = -14,
-        .y = 0
-    };
+        .y = 0};
     const lv_point_t expected_last_letter_point = {
         .x = 15,
-        .y = 0
-    };
+        .y = 0};
 
     const uint32_t first_letter_idx = 0;
     const uint32_t last_letter_idx = strlen(lv_label_get_text(long_label_multiline)) - 1; /* char index starts at 0 */
@@ -342,12 +322,10 @@ void test_label_get_letter_pos_align_center_on_empty_text(void)
     lv_point_t last_letter_point;
     const lv_point_t expected_first_letter_point = {
         .x = 0,
-        .y = 0
-    };
+        .y = 0};
     const lv_point_t expected_last_letter_point = {
         .x = 0,
-        .y = 0
-    };
+        .y = 0};
 
     const uint32_t first_letter_idx = 0;
     const uint32_t last_letter_idx = strlen(lv_label_get_text(empty_label)) - 1;
@@ -371,16 +349,13 @@ void test_label_long_text_multiline_get_letter_pos_align_center(void)
     lv_point_t last_letter_after_new_line_point;
     const lv_point_t expected_first_letter_point = {
         .x = -102,
-        .y = 0
-    };
+        .y = 0};
     const lv_point_t expected_last_letter_point = {
         .x = 153,
-        .y = 32
-    };
+        .y = 32};
     const lv_point_t expected_last_letter_after_new_line_point = {
         .x = 0,
-        .y = 48
-    };
+        .y = 48};
 
     const uint32_t first_letter_idx = 0;
     const uint32_t last_letter_idx = strlen(lv_label_get_text(long_label_multiline)) - 1; /* char index starts at 0 */
@@ -413,12 +388,10 @@ void test_label_long_text_get_letter_pos_align_center(void)
     lv_point_t last_letter_point;
     const lv_point_t expected_first_letter_point = {
         .x = -4,
-        .y = 0
-    };
+        .y = 0};
     const lv_point_t expected_last_letter_point = {
         .x = -1,
-        .y = 1536
-    };
+        .y = 1536};
 
     const uint32_t first_letter_idx = 0;
     const uint32_t last_letter_idx = strlen(lv_label_get_text(long_label)) - 1; /* char index starts at 0 */
@@ -505,7 +478,7 @@ void test_label_is_char_under_pos_align_center(void)
 
 void test_label_cut_text(void)
 {
-    const char * expected_text = "Te";
+    const char *expected_text = "Te";
     /* label has the default text which is "Text", let's remove "xt" from it */
     lv_label_cut_text(label, 2, 2);
 
@@ -568,10 +541,10 @@ void test_label_text_selection(void)
 
 void test_label_rtl_dot_long_mode(void)
 {
-    const char * message =
+    const char *message =
         "מעבד, או בשמו המלא יחידת עיבוד מרכזית (באנגלית: CPU - Central Processing Unit).";
 
-    lv_obj_t * screen = lv_obj_create(lv_screen_active());
+    lv_obj_t *screen = lv_obj_create(lv_screen_active());
     lv_obj_remove_style_all(screen);
     lv_obj_set_size(screen, 800, 480);
     lv_obj_center(screen);
@@ -579,7 +552,7 @@ void test_label_rtl_dot_long_mode(void)
     lv_obj_set_style_bg_opa(screen, LV_OPA_100, 0);
     lv_obj_set_style_pad_all(screen, 0, 0);
 
-    lv_obj_t * test_label = lv_label_create(screen);
+    lv_obj_t *test_label = lv_label_create(screen);
     lv_obj_set_style_text_font(test_label, &lv_font_dejavu_16_persian_hebrew, 0);
     lv_label_set_long_mode(test_label, LV_LABEL_LONG_DOT);
     lv_obj_set_style_base_dir(test_label, LV_BASE_DIR_RTL, 0);
@@ -594,12 +567,12 @@ void test_label_max_width(void)
 {
     lv_obj_clean(lv_screen_active());
 
-    lv_obj_t * test_label1 = lv_label_create(lv_screen_active());
+    lv_obj_t *test_label1 = lv_label_create(lv_screen_active());
     lv_label_set_text(test_label1, long_text);
     lv_obj_set_width(test_label1, 600);
     lv_obj_set_style_max_width(test_label1, 200, LV_PART_MAIN);
 
-    lv_obj_t * test_label2 = lv_label_create(lv_screen_active());
+    lv_obj_t *test_label2 = lv_label_create(lv_screen_active());
     lv_label_set_text(test_label2, long_text);
     lv_obj_set_width(test_label2, 600);
     lv_obj_set_height(test_label2, 50);

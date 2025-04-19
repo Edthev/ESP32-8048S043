@@ -6,11 +6,11 @@
  */
 void lv_example_scroll_4(void)
 {
-    lv_obj_t * obj = lv_obj_create(lv_screen_active());
+    lv_obj_t *obj = lv_obj_create(lv_screen_active());
     lv_obj_set_size(obj, 200, 100);
     lv_obj_center(obj);
 
-    lv_obj_t * label = lv_label_create(obj);
+    lv_obj_t *label = lv_label_create(obj);
     lv_label_set_text(label,
                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n"
                       "Etiam dictum, tortor vestibulum lacinia laoreet, mi neque consectetur neque, vel mattis odio dolor egestas ligula. \n"
@@ -38,9 +38,9 @@ void lv_example_scroll_4(void)
     /*Create a style for the scrollbars*/
     static lv_style_t style;
     lv_style_init(&style);
-    lv_style_set_width(&style, 4);      /*Width of the scrollbar*/
-    lv_style_set_pad_right(&style, 5);  /*Space from the parallel side*/
-    lv_style_set_pad_top(&style, 5);    /*Space from the perpendicular side*/
+    lv_style_set_width(&style, 4);     /*Width of the scrollbar*/
+    lv_style_set_pad_right(&style, 5); /*Space from the parallel side*/
+    lv_style_set_pad_top(&style, 5);   /*Space from the perpendicular side*/
 
     lv_style_set_radius(&style, 2);
     lv_style_set_bg_opa(&style, LV_OPA_70);

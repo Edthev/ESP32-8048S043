@@ -13,9 +13,9 @@ void tearDown(void)
     /* Function run after every test */
 }
 
-static lv_obj_t * create_panel(int32_t radius, bool transform)
+static lv_obj_t *create_panel(int32_t radius, bool transform)
 {
-    lv_obj_t * parent = lv_obj_create(lv_screen_active());
+    lv_obj_t *parent = lv_obj_create(lv_screen_active());
     lv_obj_set_style_pad_all(parent, 3, 0);
     lv_obj_set_style_radius(parent, radius, 0);
     lv_obj_set_style_clip_corner(parent, true, 0);
@@ -25,9 +25,10 @@ static lv_obj_t * create_panel(int32_t radius, bool transform)
     lv_obj_set_style_outline_color(parent, lv_color_hex(0xff0000), 0);
     lv_obj_set_style_outline_width(parent, 2, 0);
     lv_obj_set_style_outline_pad(parent, 5, 0);
-    if(transform) lv_obj_set_style_transform_rotation(parent, 300, 0);
+    if (transform)
+        lv_obj_set_style_transform_rotation(parent, 300, 0);
 
-    lv_obj_t * label = lv_label_create(parent);
+    lv_obj_t *label = lv_label_create(parent);
     lv_obj_set_width(label, lv_pct(200));
     lv_label_set_text(label,
                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim quam id eros iaculis dapibus. Mauris nisl orci, vulputate sed eleifend a, consectetur et nulla.");
@@ -52,14 +53,13 @@ void test_clip_corner_1(void)
     create_panel(30, false);
     create_panel(100, false);
 
-    lv_obj_t * cont = create_panel(0, true);
+    lv_obj_t *cont = create_panel(0, true);
     lv_obj_add_flag(cont, LV_OBJ_FLAG_FLEX_IN_NEW_TRACK);
     create_panel(10, true);
     create_panel(30, true);
     create_panel(100, true);
 
     TEST_ASSERT_EQUAL_SCREENSHOT("draw/clip_corner_1.png");
-
 }
 
 #endif

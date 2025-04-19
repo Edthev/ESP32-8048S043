@@ -67,7 +67,7 @@ void my_touchpad_read(lv_indev_t *indev, lv_indev_data_t *data)
 
 void setup()
 {
-  String LVGL_Arduino = "Hello Arduino ";
+  String LVGL_Arduino = "Hello Arduino";
   LVGL_Arduino += String('V') + lv_version_major() + "." + lv_version_minor() + "." + lv_version_patch();
 
   Serial.begin(115200);
@@ -98,58 +98,18 @@ void setup()
   lv_indev_set_read_cb(indev, my_touchpad_read);
 
   Serial.println("Setup done");
-
   // loads custom ui
   ui_init();
 }
 
-// start
-const char *daily_sentences[] = {
-    "Believe in yourself.",
-    "Make today count.",
-    "Stay curious.",
-    "Be kind to yourself.",
-    "Progress, not perfection.",
-    "Every day is a fresh start."};
-
-#define NUM_SENTENCES (sizeof(daily_sentences) / sizeof(daily_sentences[0]))
-
-#include "nvs_flash.h"
-#include "nvs.h"
-#include <time.h>
-
-void show_daily_sentence(lv_obj_t *label)
-{
-  nvs_handle_t nvs;
-  esp_err_t err = nvs_open("storage", NVS_READWRITE, &nvs);
-
-  int32_t last_index = 0;
-  int64_t last_time = 0;
-
-  nvs_get_i32(nvs, "sentence_idx", &last_index);
-  nvs_get_i64(nvs, "last_time", &last_time);
-
-  int64_t now = esp_timer_get_time(); // in microseconds
-
-  // 24h = 24 * 60 * 60 * 1e6 = 86400000000
-  if ((now - last_time) > 86400000000)
-  {
-    last_index = esp_random() % NUM_SENTENCES;
-    nvs_set_i32(nvs, "sentence_idx", last_index);
-    nvs_set_i64(nvs, "last_time", now);
-    nvs_commit(nvs);
-  }
-
-  nvs_close(nvs);
-
-  lv_label_set_text(label, daily_sentences[last_index]);
-}
-// end
-
 void loop()
 {
+  // seed random num generator
+  srand(time(NULL));
   lv_task_handler(); /* Let LVGL do its work. */
   ui_tick();
+  tick_screen_main();
+  tick_screen(0);
   // if button pressed print and set to false
   if (g_eez_event_is_available == true)
   {

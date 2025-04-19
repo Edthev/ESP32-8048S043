@@ -4,11 +4,11 @@
 #include <lvgl.h>
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
-extern void action_set_global_eez_event(lv_event_t * e);
-
+    extern void action_set_global_eez_event(lv_event_t *e);
 
 #ifdef __cplusplus
 }
